@@ -1,21 +1,27 @@
 <h3 *ngIf="movies; else noMovies">{{title}}</h3>
 <ng-template #noMovies>
   <div class="alert alert-info" role="alert">
-    Film bulunamadı
+    Film bulunamadı !
   </div>
 </ng-template>
+<div class="row">
+  <div class="form-group col-md-10">
+    <input id="filter" name="filter" class="form-control" placeholder="Film Filtrele"
+           [(ngModel)]="filterText"
+    >
+    <small *ngIf="filterText" class="form-text text-muted">Girilen filtre {{filterText}}</small>
+  </div>
+  <div class="col-md-2">
+    <a class="btn btn-primary" routerLink="/movies/add">Film Ekle</a>
+  </div>
 
-<div class="form-group">
-  <input id="filter" name="filter" class="form-control" placeholder="Film Filtrele"
-  [(ngModel)]="filterText"
-  >
-  <small *ngIf="filterText" class="form-text text-muted">Girilen filtre {{filterText}}</small>
 </div>
+
 <div class="row">
 
   <div *ngFor="let movie of movies | movieFilter:filterText" class="col-md-3">
     <div class="card" style="width: 18rem;">
-      <img [src]="movie.img? movie.img :'https://iasbh.tmgrup.com.tr/e7ced0/0/0/0/0/0/0?u=https://isbh.tmgrup.com.tr/sb/album/2018/06/01/1527849920125.jpg&mw=752&mh=700&l=1'" class="card-img-top" style="width: 80%; height: 80%">
+      <img [src]="movie.img? movie.img :'https://iasbh.tmgrup.com.tr/e7ced0/0/0/0/0/0/0?u=https://isbh.tmgrup.com.tr/sb/album/2018/06/01/1527849920125.jpg&mw=752&mh=700&l=1'" class="card-img-top" alt="Poster">
       <div class="card-body">
         <h5 class="card-title">{{movie.title}}</h5>
         <p class="card-text">{{movie.category}}</p>

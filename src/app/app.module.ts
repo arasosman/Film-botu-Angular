@@ -10,6 +10,7 @@ import {MovieFilterPipe} from './movie/movie-filter.pipe';
 import {FormsModule} from '@angular/forms';
 import {AlertifyService} from './services/alertify.service';
 import {HttpClientModule} from '@angular/common/http';
+import { AddComponent } from './movie/add/add.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import {HttpClientModule} from '@angular/common/http';
     NavComponent,
     MovieComponent,
     CategoryComponent,
-    MovieFilterPipe
+    MovieFilterPipe,
+    AddComponent
   ],
   imports: [
     BrowserModule,

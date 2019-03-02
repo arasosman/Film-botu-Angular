@@ -1,8 +1,8 @@
 <h3>{{title}}</h3>
 
 <div class="list-group">
-    <a class="list-group-item active"> Tüm ürünler</a>
-    <a *ngFor="let category of categories" class="list-group-item">{{category.name | uppercase}}</a>
+    <a class="list-group-item active" routerLink="/"> Tüm ürünler</a>
+    <a *ngFor="let category of categories" routerLink="movies/category/{{category._id}}" class="list-group-item">{{category.title | uppercase}}</a>
 
 </div>
 
