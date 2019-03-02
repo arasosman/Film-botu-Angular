@@ -1,0 +1,28 @@
+<h3 *ngIf="movies; else noMovies">{{title}}</h3>
+<ng-template #noMovies>
+  <div class="alert alert-info" role="alert">
+    Film bulunamadı
+  </div>
+</ng-template>
+
+<div class="form-group">
+  <input id="filter" name="filter" class="form-control" placeholder="Film Filtrele"
+  [(ngModel)]="filterText"
+  >
+  <small *ngIf="filterText" class="form-text text-muted">Girilen filtre {{filterText}}</small>
+</div>
+<div class="row">
+
+  <div *ngFor="let movie of movies | movieFilter:filterText" class="col-md-3">
+    <div class="card" style="width: 18rem;">
+      <img [src]="movie.img" class="card-img-top" style="width: 80%; height: 80%">
+      <div class="card-body">
+        <h5 class="card-title">{{movie.name}}</h5>
+        <p class="card-text">{{movie.description}}</p>
+        <a (click)="show(movie)" class="btn btn-primary">Göster</a>
+      </div>
+    </div>
+  </div>
+
+
+</div>
