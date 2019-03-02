@@ -15,10 +15,10 @@
 
   <div *ngFor="let movie of movies | movieFilter:filterText" class="col-md-3">
     <div class="card" style="width: 18rem;">
-      <img [src]="movie.img" class="card-img-top" style="width: 80%; height: 80%">
+      <img [src]="movie.img? movie.img :'https://iasbh.tmgrup.com.tr/e7ced0/0/0/0/0/0/0?u=https://isbh.tmgrup.com.tr/sb/album/2018/06/01/1527849920125.jpg&mw=752&mh=700&l=1'" class="card-img-top" style="width: 80%; height: 80%">
       <div class="card-body">
-        <h5 class="card-title">{{movie.name}}</h5>
-        <p class="card-text">{{movie.description}}</p>
+        <h5 class="card-title">{{movie.title}}</h5>
+        <p class="card-text">{{movie.category}}</p>
         <a (click)="show(movie)" class="btn btn-primary">Göster</a>
       </div>
     </div>

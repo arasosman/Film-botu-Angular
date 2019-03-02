@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Movie} from './Movie';
 import {AlertifyService} from '../services/alertify.service';
+import {HttpClient} from '@angular/common/http';
 
 declare let alertify: any;
 
@@ -11,30 +12,20 @@ declare let alertify: any;
 })
 export class MovieComponent implements OnInit {
 
-  constructor(private alertifyService: AlertifyService) {
+  constructor(private alertifyService: AlertifyService, private http: HttpClient) {
   }
 
   title = 'Filmler';
   filterText: string;
-  movies: Movie[] = [
-    {
-      id: 1,
-      name: 'test1',
-      description: 'chjaschjas',
-      img: 'https://iasbh.tmgrup.com.tr/e7ced0/0/0/0/0/0/0?u=https://isbh.tmgrup.com.tr/sb/album/2018/06/01/1527849920125.jpg&mw=752&mh=700&l=1'
-    },
-    {
-      id: 2,
-      name: 'test2',
-      description: 'sacascascxzcA',
-      img: 'https://iasbh.tmgrup.com.tr/e7ced0/0/0/0/0/0/0?u=https://isbh.tmgrup.com.tr/sb/album/2018/06/01/1527849920125.jpg&mw=752&mh=700&l=1'
-    }
-  ];
+  movies: Movie[];
 
   ngOnInit() {
+    this.http.get<Movie[]>('http://localhost:3000/api/movies').subscribe((data) => {
+      this.movies = data;
+    });
   }
 
   show(movie: Movie) {
-    this.alertifyService.success(movie.name);
+    this.alertifyService.success(movie.title);
   }
 }

@@ -10,7 +10,7 @@ export class MovieFilterPipe implements PipeTransform {
     filterText = filterText ? filterText.toLocaleLowerCase() : null;
 
     return filterText ? value.filter((p: Movie) =>
-      p.name.toLocaleLowerCase().indexOf(filterText) !== -1
+      p.title.toLocaleLowerCase().indexOf(filterText) !== -1
     ) : value;
   }
 
